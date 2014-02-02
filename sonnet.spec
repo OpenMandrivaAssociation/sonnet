@@ -13,6 +13,8 @@ License: GPL
 Group: System/Libraries
 BuildRequires: cmake
 BuildRequires: pkgconfig(Qt5Core)
+BuildRequires: pkgconfig(Qt5Widgets)
+BuildRequires: pkgconfig(Qt5Test)
 BuildRequires: qmake5
 BuildRequires: extra-cmake-modules5
 
