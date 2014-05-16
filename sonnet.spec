@@ -4,7 +4,7 @@
 %define debug_package %{nil}
 
 Name: sonnet
-Version: 4.98.0
+Version: 4.99.0
 Release: 1
 Source0: http://ftp5.gwdg.de/pub/linux/kde/unstable/frameworks/%{version}/%{name}-%{version}.tar.xz
 Summary: The KDE Frameworks 5 spell checking library
@@ -104,11 +104,19 @@ Hspell backend for the Sonnet spell checking library
 mkdir -p %{buildroot}%{_libdir}/qt5
 mv %{buildroot}%{_prefix}/mkspecs %{buildroot}%{_libdir}/qt5
 
-%files
-%{_datadir}/sonnet/trigrams.map
+L="`pwd`/%{name}.lang"
+cd %{buildroot}
+for i in .%{_datadir}/locale/*/LC_MESSAGES/*.qm; do
+	LNG=`echo $i |cut -d/ -f5`
+	echo -n "%lang($LNG) " >>$L
+	echo $i |cut -b2- >>$L
+done
+
+%files -f %{name}.lang
+%dir %{_datadir}/kf5/sonnet
+%{_datadir}/kf5/sonnet/trigrams.map
 %dir %{_libdir}/plugins
-%dir %{_libdir}/plugins/kf5
-%dir %{_libdir}/plugins/kf5/sonnet_clients
+%dir %{_libdir}/plugins/sonnet_clients
 
 %files -n %{libname}
 %{_libdir}/*.so.%{major}
@@ -116,16 +124,16 @@ mv %{buildroot}%{_prefix}/mkspecs %{buildroot}%{_libdir}/qt5
 
 # Enchant isn't supported in 4.96.0, but will likely come back
 #files enchant
-#{_libdir}/plugins/kf5/sonnet_clients/sonnet_enchant.so
+#{_libdir}/plugins/sonnet_clients/sonnet_enchant.so
 
 %files hunspell
-%{_libdir}/plugins/kf5/sonnet_clients/sonnet_hunspell.so
+%{_libdir}/plugins/sonnet_clients/sonnet_hunspell.so
 
 %files aspell
-%{_libdir}/plugins/kf5/sonnet_clients/sonnet_aspell.so
+%{_libdir}/plugins/sonnet_clients/sonnet_aspell.so
 
 %files hspell
-%{_libdir}/plugins/kf5/sonnet_clients/sonnet_hspell.so
+%{_libdir}/plugins/sonnet_clients/sonnet_hspell.so
 
 %files -n %{devname}
 %{_includedir}/*
