@@ -1,11 +1,13 @@
 %define major 5
-%define libname %mklibname KF5ItemViews %{major}
-%define devname %mklibname KF5ItemViews -d
+%define libname %mklibname KF5SonnetCore %{major}
+%define devname %mklibname KF5SonnetCore -d
+%define uilibname %mklibname KF5SonnetUi %{major}
+%define uidevname %mklibname KF5SonnetUi -d
 %define debug_package %{nil}
 
 Name: sonnet
 Version: 4.99.0
-Release: 1
+Release: 2
 Source0: http://ftp5.gwdg.de/pub/linux/kde/unstable/frameworks/%{version}/%{name}-%{version}.tar.xz
 Summary: The KDE Frameworks 5 spell checking library
 URL: http://kde.org/
@@ -38,6 +40,18 @@ Sonnet uses plugins for the actual spell-checking, and provides a
 Qt-style abstraction on top of these. Available backends include
 aspell, enchant, hspell and hunspell.
 
+%package -n %{uilibname}
+Summary: The KDE Frameworks 5 spell checking UI library
+Group: System/Libraries
+Requires: %{name} = %{EVRD}
+
+%description -n %{uilibname}
+Sonnet provides spell-checking capabilities to applications.
+
+Sonnet uses plugins for the actual spell-checking, and provides a
+Qt-style abstraction on top of these. Available backends include
+aspell, enchant, hspell and hunspell.
+
 %package -n %{devname}
 Summary: Development files for %{name}
 Group: Development/KDE and Qt
@@ -45,6 +59,21 @@ Requires: %{libname} = %{EVRD}
 
 %description -n %{devname}
 Development files (Headers etc.) for %{name}.
+
+Sonnet provides spell-checking capabilities to applications.
+
+Sonnet uses plugins for the actual spell-checking, and provides a
+Qt-style abstraction on top of these. Available backends include
+aspell, enchant, hspell and hunspell.
+
+%package -n %{uidevname}
+Summary: UI Development files for %{name}
+Group: Development/KDE and Qt
+Requires: %{uilibname} = %{EVRD}
+Requires: %{devname} = %{EVRD}
+
+%description -n %{uidevname}
+UI Development files (Headers etc.) for %{name}.
 
 Sonnet provides spell-checking capabilities to applications.
 
@@ -119,8 +148,12 @@ done
 %dir %{_libdir}/plugins/sonnet_clients
 
 %files -n %{libname}
-%{_libdir}/*.so.%{major}
-%{_libdir}/*.so.%{version}
+%{_libdir}/*Core.so.%{major}
+%{_libdir}/*Core.so.%{version}
+
+%files -n %{uilibname}
+%{_libdir}/*Ui.so.%{major}
+%{_libdir}/*Ui.so.%{version}
 
 # Enchant isn't supported in 4.96.0, but will likely come back
 #files enchant
@@ -136,7 +169,13 @@ done
 %{_libdir}/plugins/sonnet_clients/sonnet_hspell.so
 
 %files -n %{devname}
-%{_includedir}/*
-%{_libdir}/*.so
+%{_includedir}/KF5/sonnet_version.h
+%{_includedir}/KF5/SonnetCore
+%{_libdir}/*Core.so
 %{_libdir}/cmake/KF5Sonnet
-%{_libdir}/qt5/mkspecs/modules/*
+%{_libdir}/qt5/mkspecs/modules/*Core*
+
+%files -n %{uidevname}
+%{_includedir}/KF5/SonnetUi
+%{_libdir}/*Ui.so
+%{_libdir}/qt5/mkspecs/modules/*Ui*
