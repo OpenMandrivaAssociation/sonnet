@@ -6,8 +6,8 @@
 %define debug_package %{nil}
 
 Name: sonnet
-Version: 4.99.0
-Release: 2
+Version: 4.100.0
+Release: 1
 Source0: http://ftp5.gwdg.de/pub/linux/kde/unstable/frameworks/%{version}/%{name}-%{version}.tar.xz
 Summary: The KDE Frameworks 5 spell checking library
 URL: http://kde.org/
@@ -145,7 +145,8 @@ done
 %dir %{_datadir}/kf5/sonnet
 %{_datadir}/kf5/sonnet/trigrams.map
 %dir %{_libdir}/plugins
-%dir %{_libdir}/plugins/sonnet_clients
+%dir %{_libdir}/plugins/kf5
+%dir %{_libdir}/plugins/kf5/sonnet
 
 %files -n %{libname}
 %{_libdir}/*Core.so.%{major}
@@ -160,13 +161,13 @@ done
 #{_libdir}/plugins/sonnet_clients/sonnet_enchant.so
 
 %files hunspell
-%{_libdir}/plugins/sonnet_clients/sonnet_hunspell.so
+%{_libdir}/plugins/kf5/sonnet/hunspell.so
 
 %files aspell
-%{_libdir}/plugins/sonnet_clients/sonnet_aspell.so
+%{_libdir}/plugins/kf5/sonnet/aspell.so
 
 %files hspell
-%{_libdir}/plugins/sonnet_clients/sonnet_hspell.so
+%{_libdir}/plugins/kf5/sonnet/hspell.so
 
 %files -n %{devname}
 %{_includedir}/KF5/sonnet_version.h
