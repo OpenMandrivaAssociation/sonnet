@@ -7,7 +7,7 @@
 
 Name: sonnet
 Version: 4.100.0
-Release: 1
+Release: 2
 Source0: http://ftp5.gwdg.de/pub/linux/kde/unstable/frameworks/%{version}/%{name}-%{version}.tar.xz
 Summary: The KDE Frameworks 5 spell checking library
 URL: http://kde.org/
