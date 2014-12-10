@@ -15,6 +15,7 @@ URL: http://kde.org/
 License: GPL
 Group: System/Libraries
 BuildRequires: cmake
+BuildRequires: ninja
 BuildRequires: pkgconfig(Qt5Core)
 BuildRequires: pkgconfig(Qt5Widgets)
 BuildRequires: pkgconfig(Qt5Test)
@@ -124,15 +125,14 @@ Hspell backend for the Sonnet spell checking library
 
 %prep
 %setup -q
-%cmake
+%cmake -G Ninja \
+	-DKDE_INSTALL_USE_QT_SYS_PATHS:BOOL=ON
 
 %build
-%make -C build
+ninja -C build
 
 %install
-%makeinstall_std -C build
-mkdir -p %{buildroot}%{_libdir}/qt5
-mv %{buildroot}%{_prefix}/mkspecs %{buildroot}%{_libdir}/qt5
+DESTDIR="%{buildroot}" ninja install -C build
 
 L="`pwd`/%{name}.lang"
 cd %{buildroot}
@@ -145,9 +145,8 @@ done
 %files -f %{name}.lang
 %dir %{_datadir}/kf5/sonnet
 %{_datadir}/kf5/sonnet/trigrams.map
-%dir %{_libdir}/plugins
-%dir %{_libdir}/plugins/kf5
-%dir %{_libdir}/plugins/kf5/sonnet
+%dir %{_libdir}/qt5/plugins/kf5
+%dir %{_libdir}/qt5/plugins/kf5/sonnet
 
 %files -n %{libname}
 %{_libdir}/*Core.so.%{major}
@@ -159,16 +158,16 @@ done
 
 # Enchant isn't supported in 4.96.0, but will likely come back
 #files enchant
-#{_libdir}/plugins/sonnet_clients/sonnet_enchant.so
+#{_libdir}/qt5/plugins/sonnet_clients/sonnet_enchant.so
 
 %files hunspell
-%{_libdir}/plugins/kf5/sonnet/hunspell.so
+%{_libdir}/qt5/plugins/kf5/sonnet/hunspell.so
 
 %files aspell
-%{_libdir}/plugins/kf5/sonnet/aspell.so
+%{_libdir}/qt5/plugins/kf5/sonnet/aspell.so
 
 %files hspell
-%{_libdir}/plugins/kf5/sonnet/hspell.so
+%{_libdir}/qt5/plugins/kf5/sonnet/hspell.so
 
 %files -n %{devname}
 %{_includedir}/KF5/sonnet_version.h
