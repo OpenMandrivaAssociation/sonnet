@@ -70,6 +70,7 @@ Summary: UI Development files for %{name}
 Group: Development/KDE and Qt
 Requires: %{uilibname} = %{EVRD}
 Requires: %{devname} = %{EVRD}
+Provides: cmake(KF5SonnetUi)
 
 %description -n %{uidevname}
 UI Development files (Headers etc.) for %{name}.
