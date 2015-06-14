@@ -8,12 +8,13 @@
 
 Name: sonnet
 Version: 5.11.0
-Release: 1
+Release: 2
 Source0: http://download.kde.org/%{stable}/frameworks/%(echo %{version} |cut -d. -f1-2)/%{name}-%{version}.tar.xz
 Summary: The KDE Frameworks 5 spell checking library
 URL: http://kde.org/
 License: GPL
 Group: System/Libraries
+Patch0: sonnet-5.11.0-fix-path-to-hunspell-dictionaries.patch
 BuildRequires: cmake(ECM)
 BuildRequires: pkgconfig(Qt5Core)
 BuildRequires: pkgconfig(Qt5Widgets)
@@ -85,48 +86,53 @@ aspell, enchant, hspell and hunspell.
 Summary: Enchant backend for the Sonnet spell checking library
 Requires: %{libname} = %{EVRD}
 Requires: enchant
+Requires: myspell-dictionary
 Group: System/Libraries
 Provides: sonnet-backend = %{EVRD}
 BuildRequires: pkgconfig(enchant)
 
 %description enchant
-Enchant backend for the Sonnet spell checking library
+Enchant backend for the Sonnet spell checking library.
 
 %package hunspell
 Summary: Hunspell backend for the Sonnet spell checking library
 Requires: %{libname} = %{EVRD}
 Requires: hunspell
+Requires: myspell-dictionary
 Group: System/Libraries
 Provides: sonnet-backend = %{EVRD}
 BuildRequires: pkgconfig(hunspell)
 
 %description hunspell
-Hunspell backend for the Sonnet spell checking library
+Hunspell backend for the Sonnet spell checking library.
 
 %package aspell
 Summary: Aspell backend for the Sonnet spell checking library
 Requires: %{libname} = %{EVRD}
 Requires: aspell
+Requires: myspell-dictionary
 Group: System/Libraries
 Provides: sonnet-backend = %{EVRD}
 BuildRequires: aspell aspell-devel
 
 %description aspell
-Aspell backend for the Sonnet spell checking library
+Aspell backend for the Sonnet spell checking library.
 
 %package hspell
 Summary: Hspell backend for the Sonnet spell checking library
 Requires: %{libname} = %{EVRD}
 Requires: hspell
+Requires: myspell-dictionary
 Group: System/Libraries
 Provides: sonnet-backend = %{EVRD}
 BuildRequires: hspell-devel
 
 %description hspell
-Hspell backend for the Sonnet spell checking library
+Hspell backend for the Sonnet spell checking library.
 
 %prep
 %setup -q
+%apply_patches
 %cmake_kde5
 
 %build
