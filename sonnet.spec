@@ -84,6 +84,7 @@ aspell, enchant, hspell and hunspell.
 %package enchant
 Summary: Enchant backend for the Sonnet spell checking library
 Requires: %{libname} = %{EVRD}
+Requires: enchant
 Group: System/Libraries
 Provides: sonnet-backend = %{EVRD}
 BuildRequires: pkgconfig(enchant)
@@ -94,6 +95,7 @@ Enchant backend for the Sonnet spell checking library
 %package hunspell
 Summary: Hunspell backend for the Sonnet spell checking library
 Requires: %{libname} = %{EVRD}
+Requires: hunspell
 Group: System/Libraries
 Provides: sonnet-backend = %{EVRD}
 BuildRequires: pkgconfig(hunspell)
@@ -104,6 +106,7 @@ Hunspell backend for the Sonnet spell checking library
 %package aspell
 Summary: Aspell backend for the Sonnet spell checking library
 Requires: %{libname} = %{EVRD}
+Requires: aspell
 Group: System/Libraries
 Provides: sonnet-backend = %{EVRD}
 BuildRequires: aspell aspell-devel
@@ -114,6 +117,7 @@ Aspell backend for the Sonnet spell checking library
 %package hspell
 Summary: Hspell backend for the Sonnet spell checking library
 Requires: %{libname} = %{EVRD}
+Requires: hspell
 Group: System/Libraries
 Provides: sonnet-backend = %{EVRD}
 BuildRequires: hspell-devel
