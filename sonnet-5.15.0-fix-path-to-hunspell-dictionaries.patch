@@ -1,0 +1,11 @@
+--- sonnet-5.15.0/src/plugins/hunspell/hunspelldict.h.omv~	2015-10-10 17:44:32.135463699 +0200
++++ sonnet-5.15.0/src/plugins/hunspell/hunspelldict.h	2015-10-10 17:44:43.851476810 +0200
+@@ -28,7 +28,7 @@
+ #ifdef Q_OS_MAC
+ #define HUNSPELL_MAIN_DICT_PATH "/System/Library/Spelling"
+ #else
+-#define HUNSPELL_MAIN_DICT_PATH "/usr/share/hunspell/"
++#define HUNSPELL_MAIN_DICT_PATH "/usr/share/dict/ooo/"
+ #endif
+ #endif
+ 
