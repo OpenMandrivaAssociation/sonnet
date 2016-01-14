@@ -7,8 +7,8 @@
 %define stable %([ "`echo %{version} |cut -d. -f3`" -ge 80 ] && echo -n un; echo -n stable)
 
 Name: sonnet
-Version:	5.18.0
-Release:	1
+Version: 5.18.0
+Release: 2
 Source0: http://download.kde.org/%{stable}/frameworks/%(echo %{version} |cut -d. -f1-2)/%{name}-%{version}.tar.xz
 Summary: The KDE Frameworks 5 spell checking library
 URL: http://kde.org/
@@ -133,7 +133,7 @@ Hspell backend for the Sonnet spell checking library.
 %prep
 %setup -q
 %apply_patches
-%cmake_kde5
+%cmake_kde5 -DHUNSPELL_MAIN_DICT_PATH:PATH="%{_datadir}/dict/ooo"
 
 %build
 %ninja -C build
