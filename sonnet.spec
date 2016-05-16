@@ -151,6 +151,7 @@ for i in .%{_datadir}/locale/*/LC_MESSAGES/*.qm; do
 done
 
 %files -f %{name}.lang
+%{_bindir}/parsetrigrams
 %dir %{_datadir}/kf5/sonnet
 %{_datadir}/kf5/sonnet/trigrams.map
 %dir %{_libdir}/qt5/plugins/kf5
