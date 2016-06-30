@@ -17,7 +17,6 @@ Group: System/Libraries
 Patch0: sonnet-5.15.0-fix-path-to-hunspell-dictionaries.patch
 Patch1:	sonnet-5.20-default_lang.patch
 BuildRequires: cmake(ECM)
-BuildRequires:	pkgconfig(libvoikko)
 BuildRequires: pkgconfig(Qt5Core)
 BuildRequires: pkgconfig(Qt5Widgets)
 BuildRequires: pkgconfig(Qt5Test)
@@ -132,6 +131,17 @@ BuildRequires: hspell-devel
 %description hspell
 Hspell backend for the Sonnet spell checking library.
 
+%package voikko
+Summary: Voikko backend for the Sonnet spell checking library
+Requires: %{libname} = %{EVRD}
+Requires: voikko-tools
+Group: System/Libraries
+Provides: sonnet-backend = %{EVRD}
+BuildRequires: pkgconfig(libvoikko)
+
+%description voikko
+Voikko backend for the Sonnet spell checking library.
+
 %prep
 %setup -q
 %apply_patches
@@ -178,6 +188,9 @@ done
 
 %files hspell
 %{_libdir}/qt5/plugins/kf5/sonnet/hspell.so
+
+%files voikko
+%{_libdir}/qt5/plugins/kf5/sonnet/voikko.so
 
 %files -n %{devname}
 %{_includedir}/KF5/sonnet_version.h
