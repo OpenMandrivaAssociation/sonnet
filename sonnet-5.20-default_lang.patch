@@ -1,11 +1,11 @@
---- sonnet-5.20.0/src/core/settings.cpp.orig	2016-03-15 23:00:22.770924889 +0000
-+++ sonnet-5.20.0/src/core/settings.cpp	2016-03-15 23:01:05.171922178 +0000
-@@ -273,7 +273,7 @@
- {
+--- sonnet-5.42.0/src/core/settings.cpp.0001~	2018-01-07 22:39:22.948337229 +0100
++++ sonnet-5.42.0/src/core/settings.cpp	2018-01-07 22:54:49.371729617 +0100
+@@ -271,7 +271,7 @@ void Settings::restore()
      QSettings settings(QStringLiteral("KDE"), QStringLiteral("Sonnet"));
      d->defaultClient = settings.value(QStringLiteral("defaultClient"), QString()).toString();
--    d->defaultLanguage = settings.value(QStringLiteral("defaultLanguage"), QLocale::system().bcp47Name()).toString();
-+    d->defaultLanguage = settings.value(QStringLiteral("defaultLanguage"), QLocale::system().name()).toString();
+     d->defaultLanguage = settings.value(QStringLiteral("defaultLanguage"),
+-                                        QLocale::system().bcp47Name()).toString();
++                                        QLocale::system().name()).toString();
  
      //same defaults are in the default filter (filter.cpp)
      d->checkUppercase = settings.value(QStringLiteral("checkUppercase"), true).toBool();
