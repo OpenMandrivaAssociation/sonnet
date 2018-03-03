@@ -7,7 +7,7 @@
 %define stable %([ "`echo %{version} |cut -d. -f3`" -ge 80 ] && echo -n un; echo -n stable)
 
 Name: sonnet
-Version: 5.43.0
+Version: 5.44.0
 Release: 1
 Source0: http://download.kde.org/%{stable}/frameworks/%(echo %{version} |cut -d. -f1-2)/%{name}-%{version}.tar.xz
 Summary: The KDE Frameworks 5 spell checking library
@@ -15,7 +15,6 @@ URL: http://kde.org/
 License: GPL
 Group: System/Libraries
 Patch0: sonnet-5.15.0-fix-path-to-hunspell-dictionaries.patch
-Patch1:	sonnet-5.20-default_lang.patch
 BuildRequires: cmake(ECM)
 BuildRequires: pkgconfig(Qt5Core)
 BuildRequires: pkgconfig(Qt5Widgets)
