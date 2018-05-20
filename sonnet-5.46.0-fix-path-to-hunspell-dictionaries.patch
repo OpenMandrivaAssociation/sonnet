@@ -1,0 +1,11 @@
+diff -up sonnet-5.46.0/src/plugins/hunspell/hunspellclient.cpp.omv~ sonnet-5.46.0/src/plugins/hunspell/hunspellclient.cpp
+--- sonnet-5.46.0/src/plugins/hunspell/hunspellclient.cpp.omv~	2018-05-20 02:58:49.274056173 +0200
++++ sonnet-5.46.0/src/plugins/hunspell/hunspellclient.cpp	2018-05-20 02:59:06.696646958 +0200
+@@ -59,6 +59,7 @@ HunspellClient::HunspellClient(QObject *
+     maybeAddPath(QStringLiteral("/System/Library/Spelling"));
+     maybeAddPath(QStringLiteral("/usr/share/hunspell/"));
+     maybeAddPath(QStringLiteral("/usr/share/myspell/"));
++    maybeAddPath(QStringLiteral("/usr/share/dict/ooo/"));
+ #endif
+ 
+     for (const QString &dirString : dirList) {
