@@ -19,6 +19,7 @@ BuildRequires: cmake(ECM)
 BuildRequires: pkgconfig(Qt5Core)
 BuildRequires: pkgconfig(Qt5Widgets)
 BuildRequires: pkgconfig(Qt5Test)
+BuildRequires: pkgconfig(zlib)
 Requires: %{libname} = %{EVRD}
 
 %description
