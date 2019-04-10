@@ -7,8 +7,8 @@
 %define stable %([ "`echo %{version} |cut -d. -f3`" -ge 80 ] && echo -n un; echo -n stable)
 
 Name: sonnet
-Version: 5.56.0
-Release: 2
+Version: 5.57.0
+Release: 1
 Source0: http://download.kde.org/%{stable}/frameworks/%(echo %{version} |cut -d. -f1-2)/%{name}-%{version}.tar.xz
 Summary: The KDE Frameworks 5 spell checking library
 URL: http://kde.org/
@@ -20,6 +20,8 @@ BuildRequires: pkgconfig(Qt5Core)
 BuildRequires: pkgconfig(Qt5Widgets)
 BuildRequires: pkgconfig(Qt5Test)
 BuildRequires: pkgconfig(zlib)
+# For QCH format docs
+BuildRequires: qt5-assistant
 Requires: %{libname} = %{EVRD}
 
 %description
@@ -142,6 +144,14 @@ BuildRequires: pkgconfig(libvoikko)
 %description voikko
 Voikko backend for the Sonnet spell checking library.
 
+%package -n %{name}-devel-docs
+Summary: Developer documentation for %{name} for use with Qt Assistant
+Group: Documentation
+Suggests: %{devname} = %{EVRD}
+
+%description -n %{name}-devel-docs
+Developer documentation for %{name} for use with Qt Assistant
+
 %prep
 %setup -q
 %apply_patches
@@ -205,3 +215,6 @@ done
 %{_includedir}/KF5/SonnetUi
 %{_libdir}/*Ui.so
 %{_libdir}/qt5/mkspecs/modules/*Ui*
+
+%files -n %{name}-devel-docs
+%{_docdir}/qt5/*.{tags,qch}
