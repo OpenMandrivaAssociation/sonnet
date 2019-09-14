@@ -19,6 +19,7 @@ BuildRequires: cmake(ECM)
 BuildRequires: pkgconfig(Qt5Core)
 BuildRequires: pkgconfig(Qt5Widgets)
 BuildRequires: pkgconfig(Qt5Test)
+BuildRequires: cmake(Qt5UiPlugin)
 BuildRequires: pkgconfig(zlib)
 # For QCH format docs
 BuildRequires: doxygen
