@@ -166,8 +166,7 @@ Qt Designer plugin for handling %{name} widgets
 %{_libdir}/qt5/plugins/designer/*.so
 
 %prep
-%setup -q
-%apply_patches
+%autosetup -p1
 %cmake_kde5 -DHUNSPELL_MAIN_DICT_PATH:PATH="%{_datadir}/dict/ooo"
 
 %build
