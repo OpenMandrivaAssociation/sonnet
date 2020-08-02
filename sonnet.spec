@@ -7,7 +7,7 @@
 %define stable %([ "`echo %{version} |cut -d. -f3`" -ge 80 ] && echo -n un; echo -n stable)
 
 Name: sonnet
-Version: 5.72.0
+Version: 5.73.0
 Release: 1
 Source0: http://download.kde.org/%{stable}/frameworks/%(echo %{version} |cut -d. -f1-2)/%{name}-%{version}.tar.xz
 Summary: The KDE Frameworks 5 spell checking library
@@ -189,6 +189,7 @@ done
 %dir %{_libdir}/qt5/plugins/kf5
 %dir %{_libdir}/qt5/plugins/kf5/sonnet
 %{_datadir}/qlogging-categories5/sonnet.categories
+%{_datadir}/qlogging-categories5/sonnet.renamecategories
 
 %files -n %{libname}
 %{_libdir}/*Core.so.%{major}
