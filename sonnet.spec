@@ -8,7 +8,7 @@
 
 Name: sonnet
 Version: 5.74.0
-Release: 2
+Release: 3
 Source0: http://download.kde.org/%{stable}/frameworks/%(echo %{version} |cut -d. -f1-2)/%{name}-%{version}.tar.xz
 Summary: The KDE Frameworks 5 spell checking library
 URL: http://kde.org/
