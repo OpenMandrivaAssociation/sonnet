@@ -10,7 +10,7 @@ Version: 5.116.0
 Release: 2
 Source0: http://download.kde.org/%{stable}/frameworks/%(echo %{version} |cut -d. -f1-2)/%{name}-%{version}.tar.xz
 Summary: The KDE Frameworks 5 spell checking library
-URL: http://kde.org/
+URL: https://kde.org/
 License: GPL
 Group: System/Libraries
 Patch0: sonnet-5.46.0-fix-path-to-hunspell-dictionaries.patch
